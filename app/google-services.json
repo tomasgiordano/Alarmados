@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "489143725743",
+    "firebase_url": "https://alarmados-fc2bc.firebaseio.com",
+    "project_id": "alarmados-fc2bc",
+    "storage_bucket": "alarmados-fc2bc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:489143725743:android:786342d0b934b125a8ae5a",
+        "android_client_info": {
+          "package_name": "com.example.alarmados"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "489143725743-t8dbbs5deki4b9tbgr5l8ngusfv29jn2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNSpPX8rK6IT5LroGMd0eGRw8x4r_6db8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "489143725743-t8dbbs5deki4b9tbgr5l8ngusfv29jn2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
