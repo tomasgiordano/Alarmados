@@ -2,10 +2,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
+    android:foreground="?android:attr/selectableItemBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F2F2F2">
+    android:background="#F2F2F2"
+    app:avvy_text="Avatar View"
+    app:avvy_text_size="42sp"
+    app:avvy_text_color="#ccc">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -17,11 +20,33 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="32dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/ic_launcher_foreground" />
+
+    <xyz.schwaab.avvylib.AvatarView
+        android:id="@+id/avatarView"
+        android:layout_width="197dp"
+        android:layout_height="241dp"
+        app:avvy_border_color="@android:color/darker_gray"
+        app:avvy_border_highlight_color="#5973706F"
+        app:avvy_border_highlight_color_end="#BF1515"
+        app:avvy_border_thickness="2dp"
+        app:avvy_border_thickness_highlight="3dp"
+        app:avvy_distance_to_border="5dp"
+        app:avvy_highlighted="true"
+        app:avvy_loading_arches="5"
+        app:avvy_loading_arches_degree_area="90"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_launcher_foreground"
+        tools:srcCompat="@drawable/iconoalerta" />
 
     <com.hanks.htextview.typer.TyperTextView
         android:id="@+id/typerText"
