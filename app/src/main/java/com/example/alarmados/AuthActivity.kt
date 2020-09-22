@@ -8,6 +8,9 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_auth.*
+import kotlinx.android.synthetic.main.activity_auth.emailEditText
+import kotlinx.android.synthetic.main.activity_auth.passwordEditText
+import kotlinx.android.synthetic.main.activity_register.*
 import kotlin.concurrent.thread
 
 class AuthActivity : AppCompatActivity() {
@@ -45,6 +48,31 @@ class AuthActivity : AppCompatActivity() {
                 txtError.visibility = View.VISIBLE
                 txtError.text = " ERROR! Campos vacíos"
             }
+        }
+
+        buttonAdmin.setOnClickListener{
+            emailEditText.setText("admin@admin.com")
+            passwordEditText.setText("111111")
+        }
+
+        buttonInvitado.setOnClickListener{
+            emailEditText.setText("invitado@invitado.com")
+            passwordEditText.setText("222222")
+        }
+
+        buttonUsuario.setOnClickListener{
+            emailEditText.setText("usuario@usuario.com")
+            passwordEditText.setText("333333")
+        }
+
+        buttonAnonimo.setOnClickListener{
+            emailEditText.setText("anonimo@anonimo.com")
+            passwordEditText.setText("444444")
+        }
+
+        buttonTester.setOnClickListener{
+            emailEditText.setText("tester@tester.com")
+            passwordEditText.setText("555555")
         }
     }
 

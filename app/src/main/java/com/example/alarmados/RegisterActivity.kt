@@ -2,17 +2,14 @@ package com.example.alarmados
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import androidx.annotation.NonNull
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.database.R
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_register.*
-import org.w3c.dom.Comment
 
 private lateinit var database: DatabaseReference
 // ...
@@ -30,8 +27,8 @@ data class User(
 class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
         lastId()
+        setContentView(com.example.alarmados.R.layout.activity_register)
         setup()
     }
 
@@ -52,7 +49,7 @@ class RegisterActivity : AppCompatActivity() {
 
         buttonPerfil.setOnClickListener {
             contador++
-            if(contador>3)
+            if(contador>5)
             {
                 contador=1
             }
@@ -60,9 +57,10 @@ class RegisterActivity : AppCompatActivity() {
                 1 -> buttonPerfil.setText("USUARIO")
                 2 -> buttonPerfil.setText("INVITADO")
                 3 -> buttonPerfil.setText("ADMINISTRADOR")
+                4 -> buttonPerfil.setText("ANONIMO")
+                5 -> buttonPerfil.setText("TESTER")
             }
         }
-
         buttonRegister.setOnClickListener()
         {
 
@@ -89,6 +87,8 @@ class RegisterActivity : AppCompatActivity() {
                         1 -> perfil="USUARIO"
                         2 -> perfil="INVITADO"
                         3 -> perfil="ADMINISTRADOR"
+                        4 -> perfil="ANONIMO"
+                        5 -> perfil="TESTER"
                     }
                     FirebaseAuth.getInstance().createUserWithEmailAndPassword(
                         emailEditText.text.toString(),
