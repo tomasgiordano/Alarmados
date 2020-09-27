@@ -47,12 +47,9 @@ class HomeActivity : AppCompatActivity(), SensorEventListener {
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private fun setup(email: String, password: String) {
-        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        sensor = sensorManager!!.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
         vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
         flash = getSystemService(Context.CAMERA_SERVICE) as CameraManager
         cameraId = flash.getCameraIdList()[0]
-        stop()
 
         emailTextView.text = email
         logOutButton.setOnClickListener {
@@ -64,6 +61,8 @@ class HomeActivity : AppCompatActivity(), SensorEventListener {
 
         imagenPowerOn.setOnClickListener {
             if (flag) {
+                sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+                sensor = sensorManager!!.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
                 buttonDesactivar.visibility = View.VISIBLE
                 editTextPassword.visibility = View.VISIBLE
                 logOutButton.visibility = View.INVISIBLE
@@ -84,6 +83,7 @@ class HomeActivity : AppCompatActivity(), SensorEventListener {
                 imagenPowerOn.setImageResource(R.drawable.powernegro)
                 estadoAlarma2.text = "Presione el boton para activar la alarma contra robo."
                 estadoAlarma.text = "ALARMA DESACTIVADA"
+                flash.setTorchMode(cameraId,false)
                 flag = !flag
                 stop()
             }
@@ -166,23 +166,35 @@ class HomeActivity : AppCompatActivity(), SensorEventListener {
     }
 
     fun start() {
-        sensorManager!!.registerListener(
-            this, sensor,
-            SensorManager.SENSOR_DELAY_FASTEST
-        )
+        if(sensorManager!=null&&sensor!=null) {
+            sensorManager!!.registerListener(
+                this, sensor,
+                SensorManager.SENSOR_DELAY_FASTEST
+            )
+        }
     }
 
     fun stop() {
+        if(sensorManager!=null&&sensor!=null){
         sensorManager!!.unregisterListener(this, sensor)
+        }
     }
 
     override fun onPause() {
         super.onPause()
-        sensorManager!!.unregisterListener(this)
+        if(sensorManager!=null&&sensor!=null) {
+            sensorManager!!.unregisterListener(this)
+        }
     }
 
     override fun onResume() {
         super.onResume()
-        sensorManager!!.registerListener(this, sensorManager!!.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL)
+        if(sensorManager!=null&&sensor!=null) {
+            sensorManager!!.registerListener(
+                this,
+                sensorManager!!.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+                SensorManager.SENSOR_DELAY_NORMAL
+            )
+        }
     }
 }
