@@ -31,7 +31,7 @@ class AuthActivity : AppCompatActivity() {
             if (emailEditText.text.isNotEmpty() && passwordEditText.text.isNotEmpty()){
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(emailEditText.text.toString(),passwordEditText.text.toString()).addOnCompleteListener{
                     if(it.isSuccessful) {
-                        showHome(it.result?.user?.email ?:"", ProviderType.EmailPassword)
+                        showHome(it.result?.user?.email ?:"", passwordEditText.text.toString())
                         txtError.visibility = View.INVISIBLE
                         emailEditText.setText("")
                         passwordEditText.setText("")
@@ -86,10 +86,10 @@ class AuthActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    private fun showHome(email: String,provider: ProviderType) {
+    private fun showHome(email: String,password: String) {
         val homeIntent: Intent = Intent(this, HomeActivity::class.java).apply {
             putExtra("email", email)
-            putExtra("provider", provider.name)
+            putExtra("password", password)
         }
         startActivity(homeIntent)
     }
